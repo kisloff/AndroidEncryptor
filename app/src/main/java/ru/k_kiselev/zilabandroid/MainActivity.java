@@ -1,6 +1,5 @@
 package ru.k_kiselev.zilabandroid;
 
-import android.app.Dialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,10 +18,8 @@ import ru.k_kiselev.zilabandroid.utils.StringUtils;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final static String HEADER = "Encryption";
     public final static String EMPTY_INPUT_MESSAGE = "Input is empty. Enter phrase to cipher.";
     public final static String WRONG_INPUT_MESSAGE = "Input is not binary. 0 or 1 are only allowed.";
-    public final static String ALERT = "Alert";
 
     Button btnGenerateGamma;
     TextView tvGeneratedGamma;
@@ -32,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
     Button btnDecrypt;
     TextView tvDecryptedPhrase;
     Button btnClean;
-    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         btnEncrypt.setOnClickListener(listener);
         btnDecrypt.setOnClickListener(listener);
         btnClean.setOnClickListener(listener);
+
+        tvGeneratedGamma.setTextSize(etInput.getTextSize());
+        tvCipheredPhrase.setTextSize(etInput.getTextSize());
+        tvDecryptedPhrase.setTextSize(etInput.getTextSize());
     }
 
     OnClickListener listener = new OnClickListener() {
@@ -85,14 +85,12 @@ public class MainActivity extends AppCompatActivity {
         String input = etInput.getText().toString();
 
         if (input.isEmpty()) {
-            //JOptionPane.showMessageDialog(null, EMPTY_INPUT_MESSAGE, ALERT, JOptionPane.INFORMATION_MESSAGE);
             Toast.makeText(getApplicationContext(), EMPTY_INPUT_MESSAGE, Toast.LENGTH_LONG).show();
 
             return;
         }
 
         if (!StringUtils.isBinary(input)) {
-            //JOptionPane.showMessageDialog(null, WRONG_INPUT_MESSAGE, ALERT, JOptionPane.INFORMATION_MESSAGE);
             Toast.makeText(getApplicationContext(), WRONG_INPUT_MESSAGE, Toast.LENGTH_LONG).show();
             return;
         }
@@ -112,10 +110,10 @@ public class MainActivity extends AppCompatActivity {
     private void clearAllTextFields() {
         clearAllExceptInput();
         etInput.setText("");
+        tvGeneratedGamma.setText("");
     }
 
     private void clearAllExceptInput(){
-        tvGeneratedGamma.setText("");
         tvCipheredPhrase.setText("");
         tvDecryptedPhrase.setText("");
         etInput.setFocusable(true);
