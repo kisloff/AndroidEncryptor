@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ZILabAndroid</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="strGenerateGamma">Generate gamma</string>
+    <string name="strGeneratedGamma">Generated gamma</string>
+    <string name="strDecrypt">Decrypt</string>
+    <string name="strDecryptedPhrase">Decrypted phrase</string>
+    <string name="strCypheredPhrese">Ciphered phrase (after moving)</string>
+    <string name="strInputNumber">Input binary number to cipher</string>
+</resources>
