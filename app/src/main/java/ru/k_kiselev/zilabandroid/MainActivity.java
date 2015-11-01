@@ -84,7 +84,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void encrypt(){
-        //clearAllExceptInput();
         String input = etInput.getText().toString();
 
         if (input.isEmpty()) {
