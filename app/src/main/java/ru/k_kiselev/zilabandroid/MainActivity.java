@@ -20,6 +20,8 @@ public class MainActivity extends AppCompatActivity {
 
     public final static String EMPTY_INPUT_MESSAGE = "Input is empty. Enter phrase to cipher.";
     public final static String WRONG_INPUT_MESSAGE = "Input is not binary. 0 or 1 are only allowed.";
+    public final static String EMPTY_ENCRYPTED_PHRASE_MESSAGE =
+            "Encrypted phrase is empty. Click GENERATE GAMMA, then input binary number, then click ENCRYPT";
 
     Button btnGenerateGamma;
     TextView tvGeneratedGamma;
@@ -101,6 +103,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void decrypt(){
+        String cipheredPhrase = tvCipheredPhrase.getText().toString();
+
+        if(cipheredPhrase.isEmpty()){
+            Toast.makeText(getApplicationContext(), EMPTY_ENCRYPTED_PHRASE_MESSAGE, Toast.LENGTH_LONG).show();
+
+            return;
+        }
+
         String encrypted = tvCipheredPhrase.getText().toString();
         encrypted = StringUtils.cleanString(encrypted);
         String decrypted = Decryptor.decrypt(encrypted);
