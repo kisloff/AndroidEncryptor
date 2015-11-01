@@ -77,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void generateGamma(){
+        clearAllExceptInput();
         EncryptionProtocol.generateGamma();
         String gamma = Arrays.toString(EncryptionProtocol.gamma);
         tvGeneratedGamma.setText(gamma);
